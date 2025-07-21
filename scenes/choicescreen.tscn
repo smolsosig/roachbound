@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://brgotkm3als73"]
+
+[ext_resource type="Script" uid="uid://daokc6dmer57o" path="res://scenes/choicescreen.gd" id="1_5pqt0"]
+
+[node name="Choice" type="CanvasLayer" node_paths=PackedStringArray("choice1", "choice2")]
+script = ExtResource("1_5pqt0")
+choice1 = NodePath("CenterContainer/VBoxContainer/Choice1")
+choice2 = NodePath("CenterContainer/VBoxContainer/Choice2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 500.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Choice1" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 60
+text = "CHOICE 1"
+
+[node name="Choice2" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "CHOICE 2
+"

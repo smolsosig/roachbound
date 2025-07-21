@@ -1,0 +1,516 @@
+[gd_scene load_steps=32 format=4 uid="uid://bem5agbgr8oe2"]
+
+[ext_resource type="Texture2D" uid="uid://rq7tcrb224m5" path="res://assets/bg/asgard-0.png" id="1_t11i3"]
+[ext_resource type="Texture2D" uid="uid://cnwfdviwxveiv" path="res://assets/bg/asgard-1.png" id="2_1gxn7"]
+[ext_resource type="TileSet" uid="uid://de0d40k7ljsvt" path="res://assets/tilemaps/dev.tres" id="3_1gxn7"]
+[ext_resource type="Texture2D" uid="uid://1eyf0bul48bh" path="res://assets/misc/heimdall.png" id="4_7wf3g"]
+[ext_resource type="Texture2D" uid="uid://8bmhglmfy7c2" path="res://assets/misc/sol.png" id="5_f2jun"]
+[ext_resource type="Texture2D" uid="uid://c1ewf3bxkv6q8" path="res://assets/odin/walk.png" id="6_54yap"]
+[ext_resource type="Texture2D" uid="uid://doo464sgedrkc" path="res://assets/misc/mani.png" id="7_tsxaa"]
+[ext_resource type="Texture2D" uid="uid://bt5s7njowhdoj" path="res://assets/misc/freyja.png" id="8_avqki"]
+[ext_resource type="Texture2D" uid="uid://i7ca68su7nnc" path="res://assets/char/walking.png" id="9_jntms"]
+[ext_resource type="Texture2D" uid="uid://bqysrxufwkv4b" path="res://assets/misc/horse_PNG2528-592059932.png" id="10_f2jun"]
+
+[sub_resource type="GDScript" id="GDScript_t11i3"]
+script/source = "extends LevelInit
+
+@export var follow: PathFollow2D
+@export var loki_sprite: AnimatedSprite2D
+@export var horse: Sprite2D
+@export var freyja: Sprite2D
+var speed: float = 500.0
+@export var go: bool = false:
+	set(value):
+		if value == true:
+			loki_sprite.play(\"run_side\")
+		go = value
+var go_reverse: bool = false
+
+func do_shit() -> void:
+	GameManager.can_move = false
+	SignalBus.connect(\"dialogue_ended\", dialogue_ended)
+	SignalBus.connect(\"choice_chosen\", choice_chosen)
+	await get_tree().create_timer(2.5).timeout
+	SoundManager.play_music(load(\"res://assets/music/asgard.mp3\"))
+
+func dialogue_ended(key: String) -> void:
+	match key:
+		\"odin\":
+			await get_tree().create_timer(1).timeout
+			freyja.region_rect = Rect2(0, 200, 200, 200)
+			SignalBus.emit_signal(\"dialogue_show\", \"freyja\")
+		\"freyja\":
+			freyja.region_rect = Rect2(0, 0, 200, 200)
+			await get_tree().create_timer(1).timeout
+			SignalBus.emit_signal(\"dialogue_show\", \"odinn\")
+		\"odinn\":
+			SignalBus.emit_signal(\"choice_show\", \"make excuses\", \"apologize, again\", true)
+		\"loki_false\":
+			loki_turns_into_a_horse()
+		\"loki_true\":
+			loki_turns_into_a_horse()
+
+func _physics_process(delta):
+	if go:
+		if !go_reverse:
+			if follow.progress_ratio != 1:
+				follow.set_progress(follow.get_progress() + speed * delta)
+			else:
+				go = false
+				loki_sprite.pause()
+				loki_sprite.frame = 1
+		else:
+			if follow.progress_ratio != 0:
+				follow.set_progress(follow.get_progress() - speed * delta)
+			else:
+				go = false
+				loki_sprite.pause()
+				loki_sprite.frame = 1
+				await get_tree().create_timer(1).timeout
+				SoundManager.stop_music(2)
+				await Fade.fade_out(2).finished
+				get_tree().change_scene_to_file(\"res://scenes/game/levels/credits.tscn\")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	SignalBus.emit_signal(\"dialogue_show\", \"odin\")
+
+func choice_chosen(first: bool) -> void:
+	SignalBus.emit_signal(\"dialogue_show\", \"loki_%s\" % first)
+
+func loki_turns_into_a_horse() -> void:
+	var tween: Tween = get_tree().create_tween()
+	var tween2: Tween = get_tree().create_tween()
+	SoundManager.play_sound(load(\"res://assets/sounds/spy_disguise.ogg\"))
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(loki_sprite, \"modulate\", Color.TRANSPARENT, 2)
+	tween2.set_ease(Tween.EASE_IN)
+	tween2.tween_property(horse, \"modulate\", Color.BLACK, 1)
+	tween2.tween_property(horse, \"modulate\", Color.WHITE, 1)
+	await get_tree().create_timer(3).timeout
+	horse.flip_h = true
+	SoundManager.play_sound(load(\"res://assets/sounds/horse.ogg\"))
+	go_reverse = true
+	go = true
+"
+
+[sub_resource type="Animation" id="Animation_1gxn7"]
+resource_name = "init"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.03333, 7.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, -1100), Vector2(960, -1100), Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Walk:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.6, 6.4, 7.6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sol:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.03333, 6.86667, 8.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mani:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.43333, 7.53333, 9.63333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:go")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2rd4k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Walk:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sol:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mani:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:go")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf2xg"]
+_data = {
+&"RESET": SubResource("Animation_2rd4k"),
+&"init": SubResource("Animation_1gxn7")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_46scu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 109.445, 50, 0, 0, 0, 0, -904, 50)
+}
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q80yl"]
+atlas = ExtResource("9_jntms")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lnun"]
+atlas = ExtResource("9_jntms")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tuww"]
+atlas = ExtResource("9_jntms")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tybu"]
+atlas = ExtResource("9_jntms")
+region = Rect2(0, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h58yk"]
+atlas = ExtResource("9_jntms")
+region = Rect2(800, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1buw5"]
+atlas = ExtResource("9_jntms")
+region = Rect2(200, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdacm"]
+atlas = ExtResource("9_jntms")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uo1e"]
+atlas = ExtResource("9_jntms")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kji3h"]
+atlas = ExtResource("9_jntms")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5tei"]
+atlas = ExtResource("9_jntms")
+region = Rect2(400, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02328"]
+atlas = ExtResource("9_jntms")
+region = Rect2(200, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u471h"]
+atlas = ExtResource("9_jntms")
+region = Rect2(600, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewm7g"]
+atlas = ExtResource("9_jntms")
+region = Rect2(600, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtrcr"]
+atlas = ExtResource("9_jntms")
+region = Rect2(400, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n73eh"]
+atlas = ExtResource("9_jntms")
+region = Rect2(800, 400, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltrh8"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_q80yl")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_3lnun")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_3tuww")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_3lnun")
+}],
+"loop": true,
+"name": &"run_34down",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_2tybu")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_h58yk")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_1buw5")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_h58yk")
+}],
+"loop": true,
+"name": &"run_34up",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_qdacm")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7uo1e")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_kji3h")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7uo1e")
+}],
+"loop": true,
+"name": &"run_down",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_p5tei")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_02328")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_u471h")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_02328")
+}],
+"loop": true,
+"name": &"run_side",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ewm7g")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_mtrcr")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_n73eh")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_mtrcr")
+}],
+"loop": true,
+"name": &"run_up",
+"speed": 30.0
+}]
+
+[node name="asgardwalls" type="Node2D" node_paths=PackedStringArray("follow", "loki_sprite", "horse", "freyja")]
+script = SubResource("GDScript_t11i3")
+follow = NodePath("Path2D/PathFollow2D")
+loki_sprite = NodePath("Path2D/PathFollow2D/AnimatedSprite2D")
+horse = NodePath("Path2D/PathFollow2D/HorsePng2528-592059932")
+freyja = NodePath("Freyja")
+fade_in_duration = 2.0
+
+[node name="Parallaxes" type="Node2D" parent="."]
+
+[node name="Sky" type="Parallax2D" parent="Parallaxes"]
+scroll_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Parallaxes/Sky"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.992157, 0.898039, 0.756863, 1)
+
+[node name="Asgard0" type="Parallax2D" parent="Parallaxes"]
+scroll_scale = Vector2(0.3, 0.3)
+
+[node name="Asgard-0" type="Sprite2D" parent="Parallaxes/Asgard0"]
+position = Vector2(1034, 436)
+scale = Vector2(0.562101, 0.562101)
+texture = ExtResource("1_t11i3")
+
+[node name="ColorRect" type="ColorRect" parent="Parallaxes/Asgard0"]
+offset_left = 192.0
+offset_top = 832.0
+offset_right = 1876.0
+offset_bottom = 1332.0
+color = Color(0.996078, 0.764706, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Parallaxes/Asgard0"]
+offset_left = 276.0
+offset_top = 832.0
+offset_right = 1815.0
+offset_bottom = 1332.0
+color = Color(0.733333, 0.572549, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Parallaxes/Asgard0"]
+offset_left = 531.0
+offset_top = 832.0
+offset_right = 1361.0
+offset_bottom = 1332.0
+color = Color(0.392157, 0.247059, 0, 1)
+
+[node name="Asgard1" type="Parallax2D" parent="Parallaxes"]
+scroll_scale = Vector2(0.6, 0.6)
+
+[node name="ColorRect" type="ColorRect" parent="Parallaxes/Asgard1"]
+offset_left = -7.0
+offset_top = 865.0
+offset_right = 1956.0
+offset_bottom = 1365.0
+color = Color(0.733333, 0.572549, 0, 1)
+
+[node name="Asgard-1" type="Sprite2D" parent="Parallaxes/Asgard1"]
+position = Vector2(971.154, 492)
+scale = Vector2(0.694215, 0.694215)
+texture = ExtResource("2_1gxn7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wkAAQACAAMAAAD//woAAQADAAEAAAAAAAoAAQADAAEAAAABAAoAAQADAAEAAAACAAoAAQADAAEAAAADAAoAAQADAAEAAAAEAAoAAQADAAEAAAAFAAoAAQADAAEAAAAGAAoAAQADAAEAAAAHAAoAAQADAAEAAAAIAAoAAQADAAEAAAAJAAoAAQADAAEAAAAKAAoAAQADAAEAAAALAAoAAQADAAEAAAAMAAoAAQADAAEAAAANAAoAAQADAAEAAAAOAAoAAQADAAEAAAAPAAoAAQADAAEAAAAQAAoAAQADAAEAAAARAAoAAQADAAEAAAASAAoAAQADAAEAAAATAAoAAQADAAEAAAATAAkAAQACAAMAAAASAAkAAQACAAMAAAARAAkAAQACAAMAAAAQAAkAAQACAAMAAAAPAAkAAQACAAMAAAAOAAkAAQACAAMAAAANAAkAAQACAAMAAAAMAAkAAQACAAMAAAALAAkAAQACAAMAAAAKAAkAAQACAAMAAAAJAAkAAQACAAMAAAAIAAkAAQACAAMAAAAHAAkAAQACAAMAAAAGAAkAAQACAAMAAAAFAAkAAQACAAMAAAAEAAkAAQACAAMAAAADAAkAAQACAAMAAAACAAkAAQACAAMAAAABAAkAAQACAAMAAAAAAAkAAQACAAMAAAA=")
+tile_set = ExtResource("3_1gxn7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yf2xg")
+}
+autoplay = "init"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1157.0
+offset_top = 1048.0
+offset_right = 1918.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0.996078, 0.764706, 0, 1)
+text = "i'm too goddamn lazy to finish this stupid piece of shit"
+
+[node name="Heimdall" type="Sprite2D" parent="."]
+position = Vector2(717, 866)
+texture = ExtResource("4_7wf3g")
+
+[node name="Sol" type="Sprite2D" parent="."]
+position = Vector2(617, 870)
+texture = ExtResource("5_f2jun")
+flip_h = true
+
+[node name="Walk" type="Sprite2D" parent="."]
+position = Vector2(531, 902)
+texture = ExtResource("6_54yap")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 200)
+
+[node name="Mani" type="Sprite2D" parent="."]
+position = Vector2(842, 870)
+texture = ExtResource("7_tsxaa")
+
+[node name="Freyja" type="Sprite2D" parent="."]
+position = Vector2(935, 900)
+texture = ExtResource("8_avqki")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 200)
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(1985, 951)
+curve = SubResource("Curve2D_46scu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(109.445, 50)
+rotation = 3.14159
+rotates = false
+loop = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(7.16868e-06, 82)
+rotation = -3.14159
+sprite_frames = SubResource("SpriteFrames_ltrh8")
+animation = &"run_side"
+
+[node name="HorsePng2528-592059932" type="Sprite2D" parent="Path2D/PathFollow2D"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(29, 136)
+rotation = 3.14159
+scale = Vector2(0.220527, 0.220527)
+texture = ExtResource("10_f2jun")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

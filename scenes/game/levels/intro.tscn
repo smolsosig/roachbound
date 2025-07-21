@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm7cilit0l5l7"]
+
+[ext_resource type="Texture2D" uid="uid://cyxwhwqhne5su" path="res://assets/misc/this-is-a-game.png" id="1_6kbg6"]
+[ext_resource type="Texture2D" uid="uid://dnvv1rj4tk785" path="res://assets/misc/this-is-a-dialog.png" id="2_g00td"]
+[ext_resource type="Texture2D" uid="uid://cwlolpp8oqjcr" path="res://assets/misc/coding.png" id="3_dwcmj"]
+
+[sub_resource type="GDScript" id="GDScript_5matb"]
+script/source = "extends LevelInit
+
+@export var paint: Sprite2D
+@export var paint2: Sprite2D
+@export var paint3: Sprite2D
+
+func do_shit() -> void:
+	paint.hide()
+	paint2.hide()
+	paint3.hide()
+	
+	SignalBus.connect(\"dialogue_ended\", dialogue_end)
+	await get_tree().create_timer(1.5).timeout
+	SignalBus.emit_signal(\"dialogue_show\", \"intro\")
+
+func dialogue_end(key: String) -> void:
+	match key:
+		\"intro\":
+			await get_tree().create_timer(0.75).timeout
+			paint.show()
+			SoundManager.play_sound(load(\"res://assets/sounds/pencil.ogg\"))
+			await get_tree().create_timer(1).timeout
+			SignalBus.emit_signal(\"dialogue_show\", \"intro_2\")
+		\"intro_2\":
+			await get_tree().create_timer(0.75).timeout
+			paint2.show()
+			SoundManager.play_sound(load(\"res://assets/sounds/pencil.ogg\"))
+			await get_tree().create_timer(1).timeout
+			SignalBus.emit_signal(\"dialogue_show\", \"intro_3\")
+		\"intro_3\":
+			await get_tree().create_timer(0.75).timeout
+			paint3.show()
+			SoundManager.play_sound(load(\"res://assets/sounds/hulk_smaaaaash.ogg\"))
+			await get_tree().create_timer(3).timeout
+			SoundManager.stop_music(2)
+			await Fade.fade_out(2).finished
+			get_tree().change_scene_to_file(\"res://scenes/game/levels/intro2.tscn\")
+"
+
+[node name="intro" type="Node2D" node_paths=PackedStringArray("paint", "paint2", "paint3")]
+script = SubResource("GDScript_5matb")
+paint = NodePath("game_paint")
+paint2 = NodePath("game_dialog")
+paint3 = NodePath("game_code")
+fade_in = false
+music_on_start = true
+music_filename = "intro"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="game_paint" type="Sprite2D" parent="."]
+position = Vector2(652, 553)
+texture = ExtResource("1_6kbg6")
+
+[node name="game_dialog" type="Sprite2D" parent="."]
+position = Vector2(651, 401)
+texture = ExtResource("2_g00td")
+
+[node name="game_code" type="Sprite2D" parent="."]
+position = Vector2(960, 544.25)
+scale = Vector2(1.23106, 2.26268)
+texture = ExtResource("3_dwcmj")

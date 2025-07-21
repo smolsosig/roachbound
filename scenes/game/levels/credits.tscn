@@ -1,0 +1,327 @@
+[gd_scene load_steps=17 format=3 uid="uid://cm2lsvf5ks3qb"]
+
+[ext_resource type="AudioStream" uid="uid://bobuxupbeuhwp" path="res://assets/music/thehorse.ogg" id="1_i2sqk"]
+[ext_resource type="Texture2D" uid="uid://tj0kg8lm5ri5" path="res://assets/horse.jpg" id="1_xh4us"]
+[ext_resource type="Texture2D" uid="uid://bln3nch38f5b6" path="res://assets/misc/svadilfari.png" id="2_d144n"]
+[ext_resource type="Texture2D" uid="uid://cenag6tr071iw" path="res://assets/end/1 THE JOKE.png" id="3_fji5n"]
+[ext_resource type="Texture2D" uid="uid://dghnrrb7kma4w" path="res://assets/end/2 IS THAT.png" id="4_i2sqk"]
+[ext_resource type="Texture2D" uid="uid://bwusj5ju77c5e" path="res://assets/end/3 LOKI GETS.png" id="5_q4idt"]
+[ext_resource type="Texture2D" uid="uid://b3x18xplbfvo2" path="res://assets/end/4 IT ON.png" id="6_8pn03"]
+[ext_resource type="Texture2D" uid="uid://2818jggage74" path="res://assets/end/5 WITH.png" id="7_27d3d"]
+[ext_resource type="Texture2D" uid="uid://chgiyrdu4gx4n" path="res://assets/end/6 A.png" id="8_74bev"]
+[ext_resource type="Texture2D" uid="uid://n11yfiaw2f1q" path="res://assets/end/7 HORSE.png" id="9_nq87g"]
+[ext_resource type="Texture2D" uid="uid://doaohmyxw76ee" path="res://assets/end/next chapter.png" id="10_d144n"]
+[ext_resource type="Texture2D" uid="uid://dxf0kjyphklag" path="res://assets/end/fin.png" id="12_q4idt"]
+
+[sub_resource type="GDScript" id="GDScript_fji5n"]
+script/source = "extends LevelInit
+
+func _on_audio_stream_player_finished() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
+"
+
+[sub_resource type="Animation" id="Animation_172oy"]
+resource_name = "init"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/1TheJoke:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.54167, 5.73333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/2IsThat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.875, 5.63333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/3LokiGets:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.16667, 5.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/4ItOn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.41667, 5.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/5With:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.70833, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/6A:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/7Horse:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.29167, 4.76667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Svadilfari:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 3.29167, 5.73333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Horse:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.583333, 3.29167),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.244776, 0.244776, 0.244776, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("NextChapter:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6.03333, 6.43333, 6.8, 7.26667, 7.63333, 8, 8.46667, 8.93333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Fin:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 10.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ysc3m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/1TheJoke:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/2IsThat:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Svadilfari:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Horse:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/7Horse:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("NextChapter:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Fin:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmxul"]
+_data = {
+&"RESET": SubResource("Animation_ysc3m"),
+&"init": SubResource("Animation_172oy")
+}
+
+[node name="credits" type="Node2D"]
+script = SubResource("GDScript_fji5n")
+fade_in = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_i2sqk")
+autoplay = true
+bus = &"Music"
+
+[node name="Horse" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(963.5, 551.75)
+scale = Vector2(2.16111, 1.2447)
+texture = ExtResource("1_xh4us")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fmxul")
+}
+autoplay = "init"
+
+[node name="Svadilfari" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1451, 636)
+rotation = 0.136219
+scale = Vector2(0.704451, 0.704451)
+texture = ExtResource("2_d144n")
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(0.82132, 0.82132)
+
+[node name="1TheJoke" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(517, 218)
+texture = ExtResource("3_fji5n")
+
+[node name="2IsThat" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1220, 218)
+texture = ExtResource("4_i2sqk")
+
+[node name="3LokiGets" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(545, 388)
+texture = ExtResource("5_q4idt")
+
+[node name="4ItOn" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(1259, 387)
+texture = ExtResource("6_8pn03")
+
+[node name="5With" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(409, 559)
+texture = ExtResource("7_27d3d")
+
+[node name="6A" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(829, 555)
+texture = ExtResource("8_74bev")
+
+[node name="7Horse" type="Sprite2D" parent="Node2D"]
+position = Vector2(967, 557)
+texture = ExtResource("9_nq87g")
+
+[node name="NextChapter" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("10_d144n")
+
+[node name="Fin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("12_q4idt")
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

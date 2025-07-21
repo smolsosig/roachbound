@@ -1,0 +1,953 @@
+[gd_scene load_steps=10 format=3 uid="uid://dosbtldy1ej3h"]
+
+[ext_resource type="Script" uid="uid://3nj0pif8fyvr" path="res://scenes/game/odinbattle.gd" id="1_guvma"]
+[ext_resource type="Texture2D" uid="uid://bonlehks8q7xj" path="res://assets/misc/odin.png" id="2_e82w1"]
+[ext_resource type="Texture2D" uid="uid://c2w5vjrs6wtsq" path="res://assets/misc/battleref2.png" id="3_gsbxh"]
+[ext_resource type="Texture2D" uid="uid://bkqh8fokg6v7a" path="res://assets/misc/you-win.png" id="4_e82w1"]
+
+[sub_resource type="Animation" id="Animation_k4nnh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(453, 810)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(553, 89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer2/Panel/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer2/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Container/CenterContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 813)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(452, 967)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(864, 971)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Odin:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 560)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Odin:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(642, 585)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect6:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(655, 219)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect6:size")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(602, 269)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ColorRect7:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1728, 2024)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ColorRect2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("ColorRect3:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("ColorRect4:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CenterContainer2/Panel/Label:text")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Odin stands there... menacingly!"]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("ColorRect6:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("You-win:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_guvma"]
+resource_name = "flee"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container/CenterContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 492), Vector2(0, 813)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect7:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(443, 1061), Vector2(443, 644), Vector2(443, 969)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Odin:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.233333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 239), Vector2(960, 560)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer2/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 0),
+"update": 0,
+"values": [Vector2(553, 89), Vector2(553, 303)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer2/Panel/Label:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 4.13333),
+"transitions": PackedFloat32Array(0, 0, 1),
+"update": 1,
+"values": ["Odin stands there... menacingly!", "Loki turned into a cockroach!", "Odin just sighed and disappeared in disappointment."]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Odin:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.13333, 4.16667, 4.2, 4.23333, 4.26667, 4.3, 4.33333, 4.36667, 4.4, 4.43333, 4.46667, 4.5, 4.53333, 4.56667, 4.6, 4.63333, 4.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CenterContainer2/Panel/Label:visible_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 1.93333, 3.96667, 4.13333, 5.06667, 6.66667, 6.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.3, 4.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(642, 787), Vector2(642, 585)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect6:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.3, 4.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(655, 316), Vector2(655, 316)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect6:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.3, 4.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(602, 8), Vector2(602, 269)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect6:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4.13333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_cloak"
+}]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("You-win:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_nb71w"]
+resource_name = "init"
+length = 3.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 0),
+"update": 0,
+"values": [Vector2(453, 810), Vector2(453, 969)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.6, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 0, 1, 1),
+"update": 0,
+"values": [Vector2(553, 89), Vector2(553, 303), Vector2(553, 303), Vector2(553, 89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer2/Panel/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.23333, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.8, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer2/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Container/CenterContainer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.9, 3.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 813), Vector2(0, 492)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.9, 3.26667, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(452, 967), Vector2(452, 646), Vector2(452, 813)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.9, 3.26667, 3.43333, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(864, 971), Vector2(864, 650), Vector2(864, 650), Vector2(864, 1012)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Odin:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.9, 3.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 560), Vector2(960, 239)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Odin:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.633333, 1, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(642, 585), Vector2(642, 787), Vector2(642, 2000)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect6:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.633333, 1, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(655, 316), Vector2(655, 316), Vector2(2070, 316)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect6:size")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.633333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(602, 269), Vector2(602, 8)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ColorRect2:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ColorRect3:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("ColorRect4:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("ColorRect6:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0ojo"]
+_data = {
+&"RESET": SubResource("Animation_k4nnh"),
+&"flee": SubResource("Animation_guvma"),
+&"init": SubResource("Animation_nb71w")
+}
+
+[sub_resource type="GDScript" id="GDScript_guvma"]
+script/source = "extends Panel
+
+func _ready() -> void:
+	hide()
+
+func _on_button_pressed() -> void:
+	reveal(\"It's the All-Father. Fighting him is a death sentence.\")
+
+func _on_button_2_pressed() -> void:
+	reveal(\"Yeah. like THAT will do anything.\")
+
+func _on_button_3_pressed() -> void:
+	reveal(\"I'd rather my neck be chopped off by the dwarves than admit I was wrong.\")
+
+func reveal(text: String) -> void:
+	show()
+	get_node(\"Label\").text = text
+	get_node(\"Timer\").start()
+
+func _on_timer_timeout() -> void:
+	hide()
+
+
+func _on_button_4_pressed() -> void:
+	hide()
+"
+
+[node name="Odinbattle" type="CanvasLayer" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_guvma")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_p0ojo")
+}
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 400.0
+
+[node name="Panel" type="Panel" parent="CenterContainer2"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer2/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 40.0
+offset_right = 752.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 40
+text = "Odin stands there... menacingly!"
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 553.0
+offset_top = 89.0
+offset_right = 1378.0
+offset_bottom = 317.0
+color = Color(0, 0, 0, 1)
+
+[node name="Odin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 560)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_e82w1")
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = 642.0
+offset_top = 787.0
+offset_right = 1244.0
+offset_bottom = 1153.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = 655.0
+offset_top = 316.0
+offset_right = 1257.0
+offset_bottom = 324.0
+color = Color(0, 0, 0, 1)
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Container"]
+layout_mode = 0
+offset_top = 492.0
+offset_right = 1920.0
+offset_bottom = 1002.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Container/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 150)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/CenterContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 27.0
+offset_right = 157.0
+offset_bottom = 126.0
+
+[node name="Label" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="Label2" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loki"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Container/CenterContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 27.0
+offset_right = 307.0
+offset_bottom = 126.0
+
+[node name="Label" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer3"]
+layout_mode = 2
+text = "HP"
+
+[node name="Label2" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "one"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Container/CenterContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 356.0
+offset_top = 27.0
+offset_right = 472.0
+offset_bottom = 126.0
+
+[node name="Label" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer4"]
+layout_mode = 2
+text = "PP"
+
+[node name="Label2" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "none"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Container/CenterContainer/VBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 27.0
+offset_right = 951.0
+offset_bottom = 126.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer5"]
+layout_mode = 2
+text = "Exp"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="Container/CenterContainer/VBoxContainer/Panel/VBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "20 Years @ Asgard"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Panel2" type="Panel" parent="Container/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(395, 150)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label2" type="Label" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel2"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 55.0
+offset_right = 154.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 50
+text = "Loki"
+
+[node name="Panel3" type="Panel" parent="Container/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(595, 350)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 34.0
+offset_right = 466.0
+offset_bottom = 314.0
+
+[node name="Button" type="Button" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Fight"
+alignment = 0
+
+[node name="Button2" type="Button" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Dance"
+alignment = 0
+
+[node name="Button3" type="Button" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Apologize"
+alignment = 0
+
+[node name="Button4" type="Button" parent="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Turn into a roach"
+alignment = 0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 453.0
+offset_top = 969.0
+offset_right = 1469.0
+offset_bottom = 1126.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 452.0
+offset_top = 967.0
+offset_right = 856.0
+offset_bottom = 1124.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = 864.0
+offset_top = 971.0
+offset_right = 1478.0
+offset_bottom = 1337.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+offset_left = 443.0
+offset_top = 1061.0
+offset_right = 1466.0
+offset_bottom = 1427.0
+color = Color(0, 0, 0, 1)
+
+[node name="Battleref2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(960, 540)
+texture = ExtResource("3_gsbxh")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(600, 150)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 355.0
+offset_right = 300.0
+offset_bottom = 505.0
+grow_horizontal = 2
+script = SubResource("GDScript_guvma")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = 573.0
+offset_bottom = 134.0
+text = "I'd rather my head be chopped off to the dwarves than fight the All-Father."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="Panel"]
+wait_time = 2.0
+one_shot = true
+
+[node name="You-win" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 770)
+texture = ExtResource("4_e82w1")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer/Button" to="Panel" method="_on_button_pressed"]
+[connection signal="pressed" from="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer/Button2" to="Panel" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer/Button3" to="Panel" method="_on_button_3_pressed"]
+[connection signal="pressed" from="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Container/CenterContainer/VBoxContainer/HBoxContainer/Panel3/VBoxContainer/Button4" to="Panel" method="_on_button_4_pressed"]
+[connection signal="timeout" from="Panel/Timer" to="Panel" method="_on_timer_timeout"]

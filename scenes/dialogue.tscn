@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://fexadprqlxsq"]
+
+[ext_resource type="Script" uid="uid://c7uj8fo8numas" path="res://scenes/dialogue.gd" id="1_jwyou"]
+[ext_resource type="AudioStream" uid="uid://ddbo63mop1lob" path="res://assets/sounds/dialogue-typing.ogg" id="2_3n4vj"]
+
+[node name="Dialogue" type="CanvasLayer" node_paths=PackedStringArray("dialogue_node", "dialogue_text", "dialogue_cont", "typing_sound")]
+script = ExtResource("1_jwyou")
+dialogue_node = NodePath("StageDialogue")
+dialogue_text = NodePath("DialogueBubble/DialogueText")
+dialogue_cont = NodePath("DialogueBubble/Continue")
+typing_sound = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3n4vj")
+bus = &"SFX"
+
+[node name="StageDialogue" type="Node" parent="."]
+
+[node name="DialogueBubble" type="Panel" parent="."]
+offset_left = 923.0
+offset_top = 42.0
+offset_right = 1884.0
+offset_bottom = 211.0
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBubble"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 17.0
+offset_right = 924.0
+offset_bottom = 148.0
+text = "Thanks to your botched operation, Alfa is dead... Delta and Beta are M.I.A.... which leaves YOU to clean up the mess that YOU started."
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="DialogueBubble"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 834.0
+offset_top = 143.0
+offset_right = 934.0
+offset_bottom = 193.0
+text = ". . ."
+
+[connection signal="pressed" from="DialogueBubble/Continue" to="." method="_on_continue_pressed"]
